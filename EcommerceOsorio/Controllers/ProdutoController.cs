@@ -9,5 +9,10 @@ namespace EcommerceOsorio.Controllers
         {
             return View();
         }
+
+        public ActionResult CadastrarProduto()
+        {
+            return View();
+        }
     }
 }
