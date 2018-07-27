@@ -27,6 +27,8 @@ namespace EcommerceOsorio.Controllers
                 PrecoProduto = Convert.ToDouble(txtPreco),
                 CategoriaProduto = txtCategoria
             };
+
+            
             return View();
         }
     }

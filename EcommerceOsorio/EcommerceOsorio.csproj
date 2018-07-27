@@ -134,6 +134,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807271351396_CriarBanco.cs" />
+    <Compile Include="Migrations\201807271351396_CriarBanco.Designer.cs">
+      <DependentUpon>201807271351396_CriarBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +160,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807271351396_CriarBanco.resx">
+      <DependentUpon>201807271351396_CriarBanco.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
