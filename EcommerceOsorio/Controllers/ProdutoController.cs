@@ -1,14 +1,18 @@
 ﻿using EcommerceOsorio.Models;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace EcommerceOsorio.Controllers
 {
     public class ProdutoController : Controller
     {
+        Context context = new Context();
         // GET: Produto
         public ActionResult Index()
         {
+            ViewBag.Data = DateTime.Now;
+            ViewBag.Produtos = context.Produtos.ToList();
             return View();
         }
 
@@ -28,8 +32,9 @@ namespace EcommerceOsorio.Controllers
                 CategoriaProduto = txtCategoria
             };
 
-            
-            return View();
+            context.Produtos.Add(produto);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Produto");
         }
     }
 }
