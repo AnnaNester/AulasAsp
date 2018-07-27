@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using EcommerceOsorio.Models;
+using System;
+using System.Web.Mvc;
 
 namespace EcommerceOsorio.Controllers
 {
@@ -15,8 +17,16 @@ namespace EcommerceOsorio.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult CadastrarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
         {
+            Produto produto = new Produto
+            {
+                NomeProduto = txtNome,
+                DescricaoProduto = txtDescricao,
+                PrecoProduto = Convert.ToDouble(txtPreco),
+                CategoriaProduto = txtCategoria
+            };
             return View();
         }
     }
