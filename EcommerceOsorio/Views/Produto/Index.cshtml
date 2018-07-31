@@ -2,7 +2,7 @@
 @{
     Layout = null;
     DateTime data = ViewBag.Data;
-    List<EcommerceOsorio.Models.Produto> produtos = ViewBag.Produtos; 
+    List<EcommerceOsorio.Models.Produto> produtos = ViewBag.Produtos;
 }
 
 <!DOCTYPE html>
@@ -20,18 +20,34 @@
     @* Link em MVC | Razor *@
     @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
 
-
-    <div> 
+    <br />
+    <br />
+    <div>
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Alterar</th>
+                <th>Remover</th>
+            </tr>
+            @foreach (var produto in produtos)
+            {
+                <tr>
+                    <td>@produto.NomeProduto</td>
+                    <td>@produto.DescricaoProduto</td>
+                    <td>@produto.PrecoProduto</td>
+                    <td>@produto.CategoriaProduto</td>
+                    <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = produto.idProduto }, null)</td>
+                    <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produto.idProduto }, null)</td>
+                </tr>
+            }
+        </table>
     </div>
-
+    <br />
     @data
 
-    @foreach (var produto in produtos)
-    {
-        <p>Nome: @produto.NomeProduto</p>
-        <p>Descrição: @produto.DescricaoProduto</p>
-        <p>Preço: @produto.PrecoProduto</p>
-        <p>Categoria: @produto.CategoriaProduto</p><br>
-    }
+
 </body>
 </html>

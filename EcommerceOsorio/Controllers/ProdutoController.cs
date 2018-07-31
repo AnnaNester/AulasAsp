@@ -36,5 +36,34 @@ namespace EcommerceOsorio.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Produto");
         }
+
+        public ActionResult AlterarProduto(int id)
+        {
+            ViewBag.Produto = context.Produtos.Find(id);
+            context.SaveChanges();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AlterarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria, int txtId)
+        {
+            Produto produto = context.Produtos.Find(txtId);
+            produto.NomeProduto = txtNome;
+            produto.DescricaoProduto = txtDescricao;
+            produto.PrecoProduto = Convert.ToDouble(txtPreco);
+            produto.CategoriaProduto = txtCategoria;
+
+            context.Entry(produto).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index", "Produto");
+        }
+
+        public ActionResult RemoverProduto(int id)
+        {
+            Produto produto = context.Produtos.Find(id);
+            context.Produtos.Remove(produto);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Produto");
+        }
     }
 }

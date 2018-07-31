@@ -15,16 +15,16 @@
     <div>
        @using (Html.BeginForm())
        {
-            @Html.Label("Nome do produto")
+            @Html.Label("Nome do produto: ")
             @Html.TextBox("txtNome")<br><br>
 
-            @Html.Label("Descrição do produto")
+            @Html.Label("Descrição do produto: ")
             @Html.TextBox("txtDescricao")<br><br>
 
-            @Html.Label("Preço do produto")
+            @Html.Label("Preço do produto: ")
             @Html.TextBox("txtPreco")<br><br>
 
-            @Html.Label("Categoria do produto")
+            @Html.Label("Categoria do produto: ")
             @Html.TextBox("txtCategoria")<br><br>
 
             <input type="submit" value="Cadastrar" />

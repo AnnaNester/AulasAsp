@@ -1,0 +1,38 @@
+﻿@using EcommerceOsorio.Models;
+@{
+    Layout = null;
+    Produto produto = ViewBag.Produto;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AlterarProduto</title>
+</head>
+<body>
+    <h1>Alterar Produto</h1>
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.Hidden("txtId", produto.idProduto)
+            @Html.TextBox("txtId2", produto.idProduto, new { @disabled = ""})<br><br>
+
+            @Html.Label("Nome do produto: ")
+            @Html.TextBox("txtNome", produto.NomeProduto)<br><br>
+
+            @Html.Label("Descrição do produto: ")
+            @Html.TextBox("txtDescricao", produto.DescricaoProduto)<br><br>
+
+            @Html.Label("Preço do produto: ")
+            @Html.TextBox("txtPreco", produto.PrecoProduto)<br><br>
+
+            @Html.Label("Categoria do produto: ")
+            @Html.TextBox("txtCategoria", produto.CategoriaProduto)<br><br>
+
+            <input type="submit" value="Salvar" />
+        }
+    </div>
+</body>
+</html>
