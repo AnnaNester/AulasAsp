@@ -1,53 +1,41 @@
 ﻿
 @{
-    Layout = null;
+    Layout ="~/Views/Shared/Layout.cshtml";
     DateTime data = ViewBag.Data;
     List<EcommerceOsorio.Models.Produto> produtos = ViewBag.Produtos;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Gerenciamento de Produtos</title>
-</head>
-<body>
-    <h1>Gerenciamento de Produtos</h1>
-    @*<a href="~/Views/Cadastrar">Cadastrar Produto</a>*@
+<div>
+        <h2>Gerenciamento de Produtos</h2>
+        @*<a href="~/Views/Cadastrar">Cadastrar Produto</a>*@
 
 
-    @* Link em MVC | Razor *@
-    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
+        @* Link em MVC | Razor *@
+        @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
 
-    <br />
-    <br />
-    <div>
-        <table border="1">
-            <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Categoria</th>
-                <th>Alterar</th>
-                <th>Remover</th>
-            </tr>
-            @foreach (var produto in produtos)
-            {
+        <br />
+        <br />
+            <table class="table table-hover table-striped" style="margin-top:30px">
                 <tr>
-                    <td>@produto.NomeProduto</td>
-                    <td>@produto.DescricaoProduto</td>
-                    <td>@produto.PrecoProduto</td>
-                    <td>@produto.CategoriaProduto</td>
-                    <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = produto.idProduto }, null)</td>
-                    <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produto.idProduto }, null)</td>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                    <th>Alterar</th>
+                    <th>Remover</th>
                 </tr>
-            }
-        </table>
-    </div>
-    <br />
-    @data
+                @foreach (var produto in produtos)
+            {
+                    <tr>
+                        <td>@produto.NomeProduto</td>
+                        <td>@produto.DescricaoProduto</td>
+                        <td>@produto.PrecoProduto</td>
+                        <td>@produto.CategoriaProduto</td>
+                        <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = produto.ProdutoId }, new { @class = "btn btn-info" })</td>
+                        <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produto.ProdutoId }, new { @class = "btn btn-danger" })</td>
+                    </tr>
+                }
+            </table>
 
-
-</body>
-</html>
+            <p>Dados atualizados às: <b> @data</b></p>
+        </div>

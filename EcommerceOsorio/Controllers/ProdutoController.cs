@@ -1,18 +1,24 @@
-﻿using EcommerceOsorio.Models;
+﻿using EcommerceOsorio.DAL;
+using EcommerceOsorio.Models;
 using System;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace EcommerceOsorio.Controllers
 {
     public class ProdutoController : Controller
     {
-        Context context = new Context();
+        public ActionResult ListarProduto()
+        {
+            ProdutoDAO.RetornarProdutos();
+            return View();
+        }
+
+
         // GET: Produto
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = context.Produtos.ToList();
+            ViewBag.Produtos = ProdutoDAO.RetornarProdutos();
             return View();
         }
 
@@ -31,38 +37,32 @@ namespace EcommerceOsorio.Controllers
                 PrecoProduto = Convert.ToDouble(txtPreco),
                 CategoriaProduto = txtCategoria
             };
-
-            context.Produtos.Add(produto);
-            context.SaveChanges();
+            ProdutoDAO.CadastrarProduto(produto);
             return RedirectToAction("Index", "Produto");
         }
 
         public ActionResult AlterarProduto(int id)
         {
-            ViewBag.Produto = context.Produtos.Find(id);
-            context.SaveChanges();
+            ViewBag.Produto = ProdutoDAO.BuscarProdutoPorId(id);
             return View();
         }
 
         [HttpPost]
         public ActionResult AlterarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria, int txtId)
         {
-            Produto produto = context.Produtos.Find(txtId);
+            Produto produto = ProdutoDAO.BuscarProdutoPorId(txtId);
             produto.NomeProduto = txtNome;
             produto.DescricaoProduto = txtDescricao;
             produto.PrecoProduto = Convert.ToDouble(txtPreco);
             produto.CategoriaProduto = txtCategoria;
 
-            context.Entry(produto).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
+            ProdutoDAO.AlterarProduto(produto);
             return RedirectToAction("Index", "Produto");
         }
 
         public ActionResult RemoverProduto(int id)
         {
-            Produto produto = context.Produtos.Find(id);
-            context.Produtos.Remove(produto);
-            context.SaveChanges();
+            ProdutoDAO.RemoverProduto(id);
             return RedirectToAction("Index", "Produto");
         }
     }

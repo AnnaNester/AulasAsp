@@ -7,7 +7,7 @@ namespace EcommerceOsorio.Models
     public class Produto
     {
         [Key]
-        public int idProduto { get; set; }
+        public int ProdutoId { get; set; }
 
         public string NomeProduto { get; set; }
 

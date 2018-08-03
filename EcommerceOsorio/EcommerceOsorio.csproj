@@ -125,18 +125,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807271351396_CriarBanco.cs" />
-    <Compile Include="Migrations\201807271351396_CriarBanco.Designer.cs">
-      <DependentUpon>201807271351396_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808031308288_CriarBanco.cs" />
+    <Compile Include="Migrations\201808031308288_CriarBanco.Designer.cs">
+      <DependentUpon>201808031308288_CriarBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
@@ -150,8 +152,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Produto\CadastrarProduto.cshtml" />
-    <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Produto\AlterarProduto.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,8 +166,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807271351396_CriarBanco.resx">
-      <DependentUpon>201807271351396_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808031308288_CriarBanco.resx">
+      <DependentUpon>201808031308288_CriarBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

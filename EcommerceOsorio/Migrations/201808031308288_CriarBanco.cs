@@ -11,14 +11,14 @@ namespace EcommerceOsorio.Migrations
                 "dbo.Produtos",
                 c => new
                     {
-                        idProduto = c.Int(nullable: false, identity: true),
+                        ProdutoId = c.Int(nullable: false, identity: true),
                         NomeProduto = c.String(),
                         DescricaoProduto = c.String(),
                         PrecoProduto = c.Double(nullable: false),
                         CategoriaProduto = c.String(),
                         ImagemProduto = c.String(),
                     })
-                .PrimaryKey(t => t.idProduto);
+                .PrimaryKey(t => t.ProdutoId);
             
         }
         
