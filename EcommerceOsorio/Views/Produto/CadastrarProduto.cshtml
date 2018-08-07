@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout ="~/Views/Shared/Layout.cshtml";
+    @model EcommerceOsorio.Models.Produto
 }
 
     <div>
@@ -9,28 +9,33 @@
        {
         <fieldset>
             <legend>Cadastrar Produto</legend>
+            @Html.ValidationSummary(true, null, new { @class = "text-danger"})
             <div class="form-group">
-                @Html.Label("Nome do produto: ", new { @class = "control-label col-sm-2" })
+                @Html.LabelFor(model => model.NomeProduto, new { @class = "control-label col-sm-2" })
                 <div class="control-label col-sm-5">
-                    @Html.TextBox("txtNome", null, new { @class = "form-control", @placeholder = "Nome do produto" })<br><br>
+                    @Html.TextBoxFor(model => model.NomeProduto, new { @class = "form-control", @placeholder = "Nome do produto" })<br>
+                    @Html.ValidationMessageFor(model => model.NomeProduto, null, new { @class = "text-danger"})
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Descrição do produto: ", new { @class = "control-label col-sm-2" })
+                @Html.LabelFor(model => model.DescricaoProduto, new { @class = "control-label col-sm-2" })
                 <div class="control-label col-sm-5">
-                    @Html.TextBox("txtDescricao", null, new { @class = "form-control", @placeholder = "Descrição do produto" })<br><br>
+                    @Html.TextBoxFor(model => model.DescricaoProduto, new { @class = "form-control", @placeholder = "Descrição do produto" })<br>
+                    @Html.ValidationMessageFor(model => model.DescricaoProduto, null, new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Preço do produto: ", new { @class = "control-label col-sm-2" })
+                @Html.LabelFor(model => model.PrecoProduto, new { @class = "control-label col-sm-2" })
                 <div class="control-label col-sm-5">
-                    @Html.TextBox("txtPreco", null, new { @class = "form-control", @placeholder = "Preço do produto" })<br><br>
+                    @Html.TextBoxFor(model => model.PrecoProduto, new { @class = "form-control", @placeholder = "Preço do produto" })<br>
+                    @Html.ValidationMessageFor(model => model.PrecoProduto, null, new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Categoria do produto: ", new { @class = "control-label col-sm-2" })
+                @Html.LabelFor(model => model.CategoriaProduto, new { @class = "control-label col-sm-2" })
                 <div class="control-label col-sm-5">
-                    @Html.TextBox("txtCategoria", null, new { @class = "form-control", @placeholder = "Categoria do produto" })<br><br>
+                    @Html.TextBoxFor(model => model.CategoriaProduto, new { @class = "form-control", @placeholder = "Categoria do produto" })<br>
+                    @Html.ValidationMessageFor(model => model.CategoriaProduto, null, new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">

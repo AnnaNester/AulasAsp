@@ -131,16 +131,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808031308288_CriarBanco.cs" />
-    <Compile Include="Migrations\201808031308288_CriarBanco.Designer.cs">
-      <DependentUpon>201808031308288_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808071414187_CriarBanco.cs" />
+    <Compile Include="Migrations\201808071414187_CriarBanco.Designer.cs">
+      <DependentUpon>201808071414187_CriarBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +158,10 @@
     <Content Include="Views\Produto\AlterarProduto.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
+    <Content Include="Views\_viewstart.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
+    <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -166,8 +173,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808031308288_CriarBanco.resx">
-      <DependentUpon>201808031308288_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808071414187_CriarBanco.resx">
+      <DependentUpon>201808071414187_CriarBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

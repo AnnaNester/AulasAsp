@@ -14,10 +14,15 @@ namespace EcommerceOsorio.DAL
             return context.Produtos.ToList();
         }
 
-        public static void CadastrarProduto (Produto produto)
+        public static bool CadastrarProduto (Produto produto)
         {
-            context.Produtos.Add(produto);
-            context.SaveChanges();
+            if (BuscarProdutoPorNome(produto) == null)
+            {
+                context.Produtos.Add(produto);
+                context.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public static Produto BuscarProdutoPorId(int id)
@@ -31,10 +36,20 @@ namespace EcommerceOsorio.DAL
             context.SaveChanges();
         }
 
-        public static void AlterarProduto (Produto produto)
+        public static bool AlterarProduto (Produto produto)
         {
-            context.Entry(produto).State = EntityState.Modified;
-            context.SaveChanges();
+            if (context.Produtos.FirstOrDefault(x => x.NomeProduto.Equals(produto.NomeProduto) && x.ProdutoId != produto.ProdutoId) == null)
+                { 
+                    context.Entry(produto).State = EntityState.Modified;
+                    context.SaveChanges();
+                return true;
+                }
+            return false;
+        }
+
+        public static Produto BuscarProdutoPorNome(Produto produto)
+        {
+            return context.Produtos.FirstOrDefault(x => x.NomeProduto.Equals(produto.NomeProduto));
         }
     }
 }

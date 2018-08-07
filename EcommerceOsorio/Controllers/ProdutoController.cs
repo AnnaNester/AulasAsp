@@ -18,8 +18,7 @@ namespace EcommerceOsorio.Controllers
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = ProdutoDAO.RetornarProdutos();
-            return View();
+            return View(ProdutoDAO.RetornarProdutos());
         }
 
         public ActionResult CadastrarProduto()
@@ -28,36 +27,59 @@ namespace EcommerceOsorio.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
+        public ActionResult CadastrarProduto(Produto produto)
         {
-            Produto produto = new Produto
+            if (ModelState.IsValid)
+            { 
+                if (ProdutoDAO.CadastrarProduto(produto))
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Não é possível adicionar um produto com o mesmo nome!");
+                    return View(produto);
+                }
+                
+                
+            }
+            else
             {
-                NomeProduto = txtNome,
-                DescricaoProduto = txtDescricao,
-                PrecoProduto = Convert.ToDouble(txtPreco),
-                CategoriaProduto = txtCategoria
-            };
-            ProdutoDAO.CadastrarProduto(produto);
-            return RedirectToAction("Index", "Produto");
+                return View(produto);
+            }
         }
 
         public ActionResult AlterarProduto(int id)
         {
-            ViewBag.Produto = ProdutoDAO.BuscarProdutoPorId(id);
-            return View();
+            return View(ProdutoDAO.BuscarProdutoPorId(id));
         }
 
         [HttpPost]
-        public ActionResult AlterarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria, int txtId)
+        public ActionResult AlterarProduto(Produto produtoAlterado)
         {
-            Produto produto = ProdutoDAO.BuscarProdutoPorId(txtId);
-            produto.NomeProduto = txtNome;
-            produto.DescricaoProduto = txtDescricao;
-            produto.PrecoProduto = Convert.ToDouble(txtPreco);
-            produto.CategoriaProduto = txtCategoria;
+            if (ModelState.IsValid)
+            { 
+                Produto produtoOriginal = ProdutoDAO.BuscarProdutoPorId(produtoAlterado.ProdutoId);
+                produtoOriginal.NomeProduto = produtoAlterado.NomeProduto;
+                produtoOriginal.DescricaoProduto = produtoAlterado.DescricaoProduto;
+                produtoOriginal.PrecoProduto = produtoAlterado.PrecoProduto;
+                produtoOriginal.CategoriaProduto = produtoAlterado.CategoriaProduto;
 
-            ProdutoDAO.AlterarProduto(produto);
-            return RedirectToAction("Index", "Produto");
+
+                if (ProdutoDAO.AlterarProduto(produtoAlterado))
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Não é possível alterar o produto com o mesmo nome!");
+                    return View(produtoAlterado);
+                }
+            }
+            else
+            {
+                return View(produtoAlterado);
+            }
         }
 
         public ActionResult RemoverProduto(int id)

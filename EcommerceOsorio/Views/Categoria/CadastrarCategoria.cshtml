@@ -1,0 +1,34 @@
+﻿
+@{
+    @model EcommerceOsorio.Models.Categoria
+}
+
+<div>
+
+    @using (Html.BeginForm("CadastrarCategoria", "Categoria", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <fieldset>
+            <legend>Cadastrar Categoria</legend>
+            @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeCategoria, new { @class = "control-label col-sm-2" })
+                <div class="control-label col-sm-5">
+                    @Html.TextBoxFor(model => model.NomeCategoria, new { @class = "form-control", @placeholder = "Nome da categoria" })<br>
+                    @Html.ValidationMessageFor(model => model.NomeCategoria, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DescricaoCategoria, new { @class = "control-label col-sm-2" })
+                <div class="control-label col-sm-5">
+                    @Html.TextBoxFor(model => model.DescricaoCategoria, new { @class = "form-control", @placeholder = "Descrição da categoria" })<br>
+                    @Html.ValidationMessageFor(model => model.DescricaoCategoria, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>

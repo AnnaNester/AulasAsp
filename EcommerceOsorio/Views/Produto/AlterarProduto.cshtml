@@ -1,51 +1,45 @@
 ﻿@using EcommerceOsorio.Models;
+@model Produto
 @{
-    Layout = "~/Views/Shared/Layout.cshtml";
-    Produto produto = ViewBag.Produto;
+
 }
 
     
     <div>
-    
-        @using (Html.BeginForm("AlterarProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
-        {
-            <fieldset>
-                <legend>Alterar Produto</legend>
-                <div class="form-group">
-                    @Html.Hidden("txtId", produto.ProdutoId)
-                    <div class="control-label col-sm-2">
-                        @Html.TextBox("txtId2", produto.ProdutoId, new { @disabled = "" })<br><br>
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.Label("Nome do produto: ")
-                    <div class="control-label col-sm-2">
-                        @Html.TextBox("txtNome", produto.NomeProduto, new { @class = "form-control" })<br><br>
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.Label("Descrição do produto: ")
-                    <div class="control-label col-sm-2">
-                        @Html.TextBox("txtDescricao", produto.DescricaoProduto, new { @class = "form-control" })<br><br>
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.Label("Preço do produto: ")
-                    <div class="control-label col-sm-2">
-                        @Html.TextBox("txtPreco", produto.PrecoProduto, new { @class = "form-control" })<br><br>
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.Label("Categoria do produto: ")
-                    <div class="control-label col-sm-2">
-                        @Html.TextBox("txtCategoria", produto.CategoriaProduto, new { @class = "form-control" })<br><br>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" value="Salvar" class="btn btn-success" />
-                    </div>
-                </div>
-            </fieldset>
-        }
+ @using (Html.BeginForm("AlterarProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
+ {
+    <fieldset>
+        <legend>Alterar Produto</legend>
+        @Html.HiddenFor(model => model.ProdutoId)
+        <div class="form-group">
+            @Html.Label("Nome do produto: ", new { @class = "control-label col-sm-2" })
+            <div class="control-label col-sm-5">
+                @Html.TextBoxFor(model => model.NomeProduto, new { @class = "form-control", @placeholder = "Nome do produto" })<br>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Descrição do produto: ", new { @class = "control-label col-sm-2" })
+            <div class="control-label col-sm-5">
+                @Html.TextBoxFor(model => model.DescricaoProduto, new { @class = "form-control", @placeholder = "Descrição do produto" })<br>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Preço do produto: ", new { @class = "control-label col-sm-2" })
+            <div class="control-label col-sm-5">
+                @Html.TextBoxFor(model => model.PrecoProduto, new { @class = "form-control", @placeholder = "Preço do produto" })<br>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Categoria do produto: ", new { @class = "control-label col-sm-2" })
+            <div class="control-label col-sm-5">
+                @Html.TextBoxFor(model => model.CategoriaProduto, new { @class = "form-control", @placeholder = "Categoria do produto" })<br>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </div>
+    </fieldset>
+ }
     </div>

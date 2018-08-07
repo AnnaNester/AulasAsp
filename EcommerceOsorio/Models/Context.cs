@@ -10,5 +10,7 @@ namespace EcommerceOsorio.Models
 
         public DbSet<Produto> Produtos { get; set; }
 
+        public DbSet<Categoria> Categoria { get; set; }
+ 
     }
 }

@@ -1,0 +1,33 @@
+﻿@using EcommerceOsorio.Models;
+@model Categoria
+@{
+
+}
+
+
+<div>
+    @using (Html.BeginForm("AlterarCategoria", "Categoria", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <fieldset>
+            <legend>Alterar Categoria</legend>
+            @Html.HiddenFor(model => model.CategoriaId)
+            <div class="form-group">
+                @Html.Label("Nome da categoria: ", new { @class = "control-label col-sm-2" })
+                <div class="control-label col-sm-5">
+                    @Html.TextBoxFor(model => model.NomeCategoria, new { @class = "form-control", @placeholder = "Nome do produto" })<br>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Descrição da categoria: ", new { @class = "control-label col-sm-2" })
+                <div class="control-label col-sm-5">
+                    @Html.TextBoxFor(model => model.DescricaoCategoria, new { @class = "form-control", @placeholder = "Descrição do produto" })<br>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>

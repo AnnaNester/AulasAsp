@@ -13,7 +13,7 @@ namespace EcommerceOsorio.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808031308288_CriarBanco"; }
+            get { return "201808071414187_CriarBanco"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,8 +1,8 @@
-﻿
+﻿@using EcommerceOsorio.Models
+
+@model List<Produto>
 @{
-    Layout ="~/Views/Shared/Layout.cshtml";
     DateTime data = ViewBag.Data;
-    List<EcommerceOsorio.Models.Produto> produtos = ViewBag.Produtos;
 }
 
 <div>
@@ -24,7 +24,7 @@
                     <th>Alterar</th>
                     <th>Remover</th>
                 </tr>
-                @foreach (var produto in produtos)
+                @foreach (var produto in Model)
             {
                     <tr>
                         <td>@produto.NomeProduto</td>
