@@ -5,7 +5,7 @@
 
     <div>
         
-       @using (Html.BeginForm("CadastrarProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
+       @using (Html.BeginForm("CadastrarProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
        {
         <fieldset>
             <legend>Cadastrar Produto</legend>
@@ -34,8 +34,14 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CategoriaProduto, new { @class = "control-label col-sm-2" })
                 <div class="control-label col-sm-5">
-                    @Html.TextBoxFor(model => model.CategoriaProduto, new { @class = "form-control", @placeholder = "Categoria do produto" })<br>
+                    @Html.DropDownList("Categorias", null, " -- SELECIONE -- ", new { @class = "form-control" })<br>
                     @Html.ValidationMessageFor(model => model.CategoriaProduto, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Imagem do produto", new { @class = "control-label col-sm-2" })
+                <div class="control-label col-sm-5">
+                    <input type="file" name="fupImagem" class="form-control-file"/>
                 </div>
             </div>
             <div class="form-group">

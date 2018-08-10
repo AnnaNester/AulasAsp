@@ -135,12 +135,13 @@
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
+    <Compile Include="DAL\SingletonContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808071414187_CriarBanco.cs" />
-    <Compile Include="Migrations\201808071414187_CriarBanco.Designer.cs">
-      <DependentUpon>201808071414187_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808101131189_AddCategoriaTableProduto.cs" />
+    <Compile Include="Migrations\201808101131189_AddCategoriaTableProduto.Designer.cs">
+      <DependentUpon>201808101131189_AddCategoriaTableProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -171,10 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808071414187_CriarBanco.resx">
-      <DependentUpon>201808071414187_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808101131189_AddCategoriaTableProduto.resx">
+      <DependentUpon>201808101131189_AddCategoriaTableProduto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

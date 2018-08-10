@@ -7,11 +7,11 @@ namespace EcommerceOsorio.DAL
 {
     public class ProdutoDAO
     {
-        private static Context context = new Context();
+        private static Context context = SingletonContext.GetInstance();
 
         public static List<Produto> RetornarProdutos()
         {
-            return context.Produtos.ToList();
+            return context.Produtos.Include("CategoriaProduto").ToList();
         }
 
         public static bool CadastrarProduto (Produto produto)
@@ -38,7 +38,7 @@ namespace EcommerceOsorio.DAL
 
         public static bool AlterarProduto (Produto produto)
         {
-            if (context.Produtos.FirstOrDefault(x => x.NomeProduto.Equals(produto.NomeProduto) && x.ProdutoId != produto.ProdutoId) == null)
+            if (context.Produtos.Include("CategoriaProduto").FirstOrDefault(x => x.NomeProduto.Equals(produto.NomeProduto) && x.ProdutoId != produto.ProdutoId) == null)
                 { 
                     context.Entry(produto).State = EntityState.Modified;
                     context.SaveChanges();
@@ -49,7 +49,7 @@ namespace EcommerceOsorio.DAL
 
         public static Produto BuscarProdutoPorNome(Produto produto)
         {
-            return context.Produtos.FirstOrDefault(x => x.NomeProduto.Equals(produto.NomeProduto));
+            return context.Produtos.Include("CategoriaProduto").FirstOrDefault(x => x.NomeProduto.Equals(produto.NomeProduto));
         }
     }
 }

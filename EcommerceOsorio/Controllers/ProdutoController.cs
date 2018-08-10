@@ -1,6 +1,8 @@
 ﻿using EcommerceOsorio.DAL;
 using EcommerceOsorio.Models;
 using System;
+using System.IO;
+using System.Web;
 using System.Web.Mvc;
 
 namespace EcommerceOsorio.Controllers
@@ -23,25 +25,48 @@ namespace EcommerceOsorio.Controllers
 
         public ActionResult CadastrarProduto()
         {
+            ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategoria(), "CategoriaId", "NomeCategoria");
             return View();
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(Produto produto)
+        public ActionResult CadastrarProduto(Produto produto, int? Categorias, HttpPostedFileBase fupImagem)
         {
+            ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategoria(), "CategoriaId", "NomeCategoria");
             if (ModelState.IsValid)
-            { 
-                if (ProdutoDAO.CadastrarProduto(produto))
+            {
+                if (Categorias != null)
                 {
-                    return RedirectToAction("Index", "Produto");
+                if (fupImagem != null)
+                { 
+                    string nomeImagem = Path.GetFileName(fupImagem.FileName);
+                    string caminho = Path.Combine(Server.MapPath("~/Images/"), nomeImagem);
+
+                    fupImagem.SaveAs(caminho);
+
+                    produto.ImagemProduto = nomeImagem;
+                }
+                else
+                    {
+                        produto.ImagemProduto = "image (1).jpeg";
+                    }
+
+                    produto.CategoriaProduto = CategoriaDAO.BuscarCategoriaPorId(Categorias);
+                    if (ProdutoDAO.CadastrarProduto(produto))
+                    {
+                        return RedirectToAction("Index", "Produto");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Não é possível adicionar um produto com o mesmo nome!");
+                        return View(produto);
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Não é possível adicionar um produto com o mesmo nome!");
+                    ModelState.AddModelError("", "Por favor selecione uma categoria!");
                     return View(produto);
                 }
-                
-                
             }
             else
             {

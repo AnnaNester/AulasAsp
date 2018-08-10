@@ -3,7 +3,7 @@ namespace EcommerceOsorio.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CriarBanco : DbMigration
+    public partial class AddCategoriaTableProduto : DbMigration
     {
         public override void Up()
         {
@@ -25,15 +25,19 @@ namespace EcommerceOsorio.Migrations
                         NomeProduto = c.String(nullable: false, maxLength: 50),
                         DescricaoProduto = c.String(),
                         PrecoProduto = c.Double(nullable: false),
-                        CategoriaProduto = c.String(),
                         ImagemProduto = c.String(),
+                        CategoriaProduto_CategoriaId = c.Int(),
                     })
-                .PrimaryKey(t => t.ProdutoId);
+                .PrimaryKey(t => t.ProdutoId)
+                .ForeignKey("dbo.Categoria", t => t.CategoriaProduto_CategoriaId)
+                .Index(t => t.CategoriaProduto_CategoriaId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Produtos", "CategoriaProduto_CategoriaId", "dbo.Categoria");
+            DropIndex("dbo.Produtos", new[] { "CategoriaProduto_CategoriaId" });
             DropTable("dbo.Produtos");
             DropTable("dbo.Categoria");
         }

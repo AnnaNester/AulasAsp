@@ -22,7 +22,7 @@ namespace EcommerceOsorio.Models
         public double PrecoProduto { get; set; }
 
         [Display(Name = "Categoria do produto")]
-        public string CategoriaProduto { get; set; }
+        public Categoria CategoriaProduto { get; set; }
 
         [Display(Name = "Imagem do produto")]
         public string ImagemProduto { get; set; }

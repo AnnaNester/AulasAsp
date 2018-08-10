@@ -7,7 +7,7 @@ namespace EcommerceOsorio.DAL
 {
     public class CategoriaDAO
     {
-        private static Context context = new Context();
+        private static Context context = SingletonContext.GetInstance();
 
         public static List<Categoria> RetornarCategoria()
         {
@@ -25,7 +25,7 @@ namespace EcommerceOsorio.DAL
             return false;
         }
 
-        public static Categoria BuscarCategoriaPorId(int id)
+        public static Categoria BuscarCategoriaPorId(int? id)
         {
             return context.Categoria.Find(id);
         }
