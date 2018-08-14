@@ -112,5 +112,10 @@ namespace EcommerceOsorio.Controllers
             ProdutoDAO.RemoverProduto(id);
             return RedirectToAction("Index", "Produto");
         }
+
+        public ActionResult ListarPorCategoria (int categoria)
+        {
+            return ViewBag.Produtos = CategoriaDAO.BuscarCategoriaPorId(categoria);
+        }
     }
 }

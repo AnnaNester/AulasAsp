@@ -1,0 +1,33 @@
+﻿@using EcommerceOsorio.Models
+@model List<Categoria>
+@{
+    List<Produto> produtos = ViewBag.Produtos;
+}
+
+<ul class="nav nav-tabs">
+
+    @foreach (var categoria in Model)
+    {
+        <li class="nav-item">
+            @Html.ActionLink(@categoria.NomeCategoria, "", "Produto", new { id = categoria.CategoriaId }, new { @class = "nav-link active show" })
+        </li>
+        @*<a class="nav-link active show" data-toggle="tab" href="#home">@categoria.NomeCategoria</a></li>*@
+    }
+
+
+</ul>
+
+<div class="grid-container">
+    
+        @foreach (var produto in produtos)
+        {
+            <div class="grid-item">
+                @produto.ImagemProduto
+                @produto.NomeProduto
+            </div>
+        }
+    
+
+</div>
+
+

@@ -3,7 +3,7 @@ namespace EcommerceOsorio.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddCategoriaTableProduto : DbMigration
+    public partial class CriarBanco : DbMigration
     {
         public override void Up()
         {

@@ -51,5 +51,10 @@ namespace EcommerceOsorio.DAL
         {
             return context.Produtos.Include("CategoriaProduto").FirstOrDefault(x => x.NomeProduto.Equals(produto.NomeProduto));
         }
+
+        public static Produto BuscarProdutoPorCategoria(Produto produto)
+        {
+            return context.Produtos.Include("CategoriaProduto").FirstOrDefault(x => x.CategoriaProduto.Equals(produto.CategoriaProduto));
+        }
     }
 }

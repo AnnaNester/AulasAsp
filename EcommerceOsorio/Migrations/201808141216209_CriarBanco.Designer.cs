@@ -7,13 +7,13 @@ namespace EcommerceOsorio.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddCategoriaTableProduto : IMigrationMetadata
+    public sealed partial class CriarBanco : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCategoriaTableProduto));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CriarBanco));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808101131189_AddCategoriaTableProduto"; }
+            get { return "201808141216209_CriarBanco"; }
         }
         
         string IMigrationMetadata.Source
