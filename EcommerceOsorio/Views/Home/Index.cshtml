@@ -1,33 +1,30 @@
 ﻿@using EcommerceOsorio.Models
-@model List<Categoria>
+@model List<Produto>
 @{
-    List<Produto> produtos = ViewBag.Produtos;
+    ViewBag.Title = "Index";
+    List<Categoria> categorias = ViewBag.Categorias;
 }
 
 <ul class="nav nav-tabs">
 
-    @foreach (var categoria in Model)
+    @foreach (Categoria categ in categorias)
     {
         <li class="nav-item">
-            @Html.ActionLink(@categoria.NomeCategoria, "", "Produto", new { id = categoria.CategoriaId }, new { @class = "nav-link active show" })
+            @Html.ActionLink(categ.NomeCategoria, "Index", "Home", new { id = categ.CategoriaId }, new { @class = "nav-link active show" })
         </li>
-        @*<a class="nav-link active show" data-toggle="tab" href="#home">@categoria.NomeCategoria</a></li>*@
     }
-
 
 </ul>
 
-<div class="grid-container">
-    
-        @foreach (var produto in produtos)
-        {
-            <div class="grid-item">
-                @produto.ImagemProduto
-                @produto.NomeProduto
-            </div>
-        }
-    
+<div class="row">
+    @foreach (var produto in Model)
+    {
+        <div class="col-sm-3" style="text-align:center; margin-bottom: 30px">
+            <img src="~/Images/@produto.ImagemProduto" style="width:150px;height:150px;margin-bottom:15px"/><br />
+            @Html.ActionLink(produto.NomeProduto, "ProdutoDetalhe", new { id = produto.ProdutoId}) <br />
+            <b>Preço: R$</b>@produto.PrecoProduto
+        </div>
+    }
 
 </div>
-
 

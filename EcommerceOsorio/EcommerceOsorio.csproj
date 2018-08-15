@@ -165,6 +165,7 @@
     <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
     <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ProdutoDetalhe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,27 @@
+﻿@model EcommerceOsorio.Models.Produto
+@{
+    ViewBag.Title = "ProdutoDetalhe";
+}
+
+<table style="margin-left: 35px">
+    <tr>
+        <td colspan="4">
+            <h4>@Model.NomeProduto</h4>
+        </td>
+    </tr>
+    <tr>
+        <td style="width:300px">
+            <img src="~/Images/@Model.ImagemProduto" />
+        </td>
+        <td style="vertical-align: top; padding-left: 35px">
+            <b>Descrição: </b>
+            <br />
+            @Model.DescricaoProduto<br />
+            <b>Preço: R$ </b>@Model.PrecoProduto<br />
+            <b>Categoria: </b>@Model.CategoriaProduto.NomeCategoria
+            <br />
+        </td>
+    </tr>
+</table>
+
+

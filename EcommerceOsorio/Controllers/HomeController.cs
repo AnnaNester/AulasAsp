@@ -6,16 +6,21 @@ namespace EcommerceOsorio.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(CategoriaDAO.RetornarCategoria());
+            ViewBag.Categorias = CategoriaDAO.RetornarCategoria();
+            if (id ==null)
+            {
+                return View(ProdutoDAO.RetornarProdutos());
+            }
+            return View(ProdutoDAO.BuscarProdutoPorCategoria(id));
         }
 
-        [HttpPost]
-        public ActionResult ListarProduto(int id)
+        public ActionResult ProdutoDetalhe(int id)
         {
-            return View();
+            return View(ProdutoDAO.BuscarProdutoPorId(id));
         }
+
 
 
     }
