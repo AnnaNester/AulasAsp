@@ -11,14 +11,14 @@ namespace EcommerceOsorio.DAL
 
         public static List<Categoria> RetornarCategoria()
         {
-            return context.Categoria.ToList();
+            return context.Categorias.ToList();
         }
 
         public static bool CadastrarCategoria(Categoria categoria)
         {
             if (BuscarCategoriaPorNome(categoria) == null)
             {
-                context.Categoria.Add(categoria);
+                context.Categorias.Add(categoria);
                 context.SaveChanges();
                 return true;
             }
@@ -27,18 +27,18 @@ namespace EcommerceOsorio.DAL
 
         public static Categoria BuscarCategoriaPorId(int? id)
         {
-            return context.Categoria.Find(id);
+            return context.Categorias.Find(id);
         }
 
         public static void RemoverCategoria(int id)
         {
-            context.Categoria.Remove(BuscarCategoriaPorId(id));
+            context.Categorias.Remove(BuscarCategoriaPorId(id));
             context.SaveChanges();
         }
 
         public static bool AlterarCategoria(Categoria categoria)
         {
-            if (context.Categoria.FirstOrDefault(x => x.NomeCategoria.Equals(categoria.NomeCategoria) && x.CategoriaId != categoria.CategoriaId) == null)
+            if (context.Categorias.FirstOrDefault(x => x.NomeCategoria.Equals(categoria.NomeCategoria) && x.CategoriaId != categoria.CategoriaId) == null)
             {
                 context.Entry(categoria).State = EntityState.Modified;
                 context.SaveChanges();
@@ -49,7 +49,7 @@ namespace EcommerceOsorio.DAL
 
         public static Categoria BuscarCategoriaPorNome(Categoria categoria)
         {
-            return context.Categoria.FirstOrDefault(x => x.NomeCategoria.Equals(categoria.NomeCategoria));
+            return context.Categorias.FirstOrDefault(x => x.NomeCategoria.Equals(categoria.NomeCategoria));
         }
     }
 }

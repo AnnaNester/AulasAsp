@@ -135,18 +135,28 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAL\CategoriaDAO.cs" />
+    <Compile Include="DAL\ItemVendaDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="DAL\SingletonContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808141216209_CriarBanco.cs" />
-    <Compile Include="Migrations\201808141216209_CriarBanco.Designer.cs">
-      <DependentUpon>201808141216209_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808171117087_CriarBanco.cs" />
+    <Compile Include="Migrations\201808171117087_CriarBanco.Designer.cs">
+      <DependentUpon>201808171117087_CriarBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171314485_AddTableItemVenda.cs" />
+    <Compile Include="Migrations\201808171314485_AddTableItemVenda.Designer.cs">
+      <DependentUpon>201808171314485_AddTableItemVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171422053_AlterTableCategorias.cs" />
+    <Compile Include="Migrations\201808171422053_AlterTableCategorias.Designer.cs">
+      <DependentUpon>201808171422053_AlterTableCategorias.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\ItemVenda.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +176,7 @@
     <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ProdutoDetalhe.cshtml" />
+    <Content Include="Views\Home\CarrinhoCompras.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,8 +189,14 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808141216209_CriarBanco.resx">
-      <DependentUpon>201808141216209_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808171117087_CriarBanco.resx">
+      <DependentUpon>201808171117087_CriarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171314485_AddTableItemVenda.resx">
+      <DependentUpon>201808171314485_AddTableItemVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171422053_AlterTableCategorias.resx">
+      <DependentUpon>201808171422053_AlterTableCategorias.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

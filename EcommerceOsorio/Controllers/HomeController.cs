@@ -1,4 +1,6 @@
 ﻿using EcommerceOsorio.DAL;
+using EcommerceOsorio.Models;
+using System;
 using System.Web.Mvc;
 
 namespace EcommerceOsorio.Controllers
@@ -21,7 +23,24 @@ namespace EcommerceOsorio.Controllers
             return View(ProdutoDAO.BuscarProdutoPorId(id));
         }
 
+        public ActionResult AdicionarAoCarrinho (int id)
+        {
+            Produto produto = ProdutoDAO.BuscarProdutoPorId(id);
+            ItemVenda itemVenda = new ItemVenda
+            {
+                ProdutoVenda = produto,
+                QtdeVenda = 1,
+                PrecoVenda = produto.PrecoProduto,
+                DataVenda = DateTime.Now,
+            };
+            ItemVendaDAO.CadastrarVenda(itemVenda);
+            return RedirectToAction("CarrinhoCompras");
+        }
 
+        public ActionResult CarrinhoCompras()
+        {
+            return View(ItemVendaDAO.RetornarVenda());
+        }
 
     }
 }
