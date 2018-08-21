@@ -1,5 +1,6 @@
 ﻿using EcommerceOsorio.DAL;
 using EcommerceOsorio.Models;
+using EcommerceOsorio.Utils;
 using System;
 using System.Web.Mvc;
 
@@ -32,14 +33,15 @@ namespace EcommerceOsorio.Controllers
                 QtdeVenda = 1,
                 PrecoVenda = produto.PrecoProduto,
                 DataVenda = DateTime.Now,
+                CarrinhoId = Sessao.RetornarCarrinhoId()
             };
             ItemVendaDAO.CadastrarVenda(itemVenda);
             return RedirectToAction("CarrinhoCompras");
         }
 
         public ActionResult CarrinhoCompras()
-        {
-            return View(ItemVendaDAO.RetornarVenda());
+        { 
+            return View(ItemVendaDAO.BuscarCarrinhoId(Sessao.RetornarCarrinhoId()));
         }
 
     }

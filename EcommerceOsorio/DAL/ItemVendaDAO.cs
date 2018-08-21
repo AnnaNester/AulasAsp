@@ -8,7 +8,7 @@ namespace EcommerceOsorio.DAL
     {
         private static Context context = SingletonContext.GetInstance();
 
-        public static List<ItemVenda> RetornarVenda()
+        public static List<ItemVenda> RetornarVendaCarrinhoId()
         {
             return context.ItensVenda.ToList();
         }
@@ -17,6 +17,11 @@ namespace EcommerceOsorio.DAL
         {
             context.ItensVenda.Add(venda);
             context.SaveChanges();
+        }
+
+        public static List<ItemVenda> BuscarCarrinhoId (string idCarrinho)
+        {
+            return context.ItensVenda.Include("ProdutoVenda").Where(x => x.CarrinhoId.Equals(idCarrinho)).ToList();
         }
     }
 }

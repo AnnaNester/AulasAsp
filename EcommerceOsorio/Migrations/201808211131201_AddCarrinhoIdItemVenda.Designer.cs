@@ -7,13 +7,13 @@ namespace EcommerceOsorio.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AlterTableCategorias : IMigrationMetadata
+    public sealed partial class AddCarrinhoIdItemVenda : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterTableCategorias));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCarrinhoIdItemVenda));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808171422053_AlterTableCategorias"; }
+            get { return "201808211131201_AddCarrinhoIdItemVenda"; }
         }
         
         string IMigrationMetadata.Source

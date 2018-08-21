@@ -18,6 +18,20 @@ namespace EcommerceOsorio.Migrations
                 .PrimaryKey(t => t.CategoriaId);
             
             CreateTable(
+                "dbo.ItemVenda",
+                c => new
+                    {
+                        idVenda = c.Int(nullable: false, identity: true),
+                        QtdeVenda = c.Int(nullable: false),
+                        PrecoVenda = c.Double(nullable: false),
+                        DataVenda = c.DateTime(nullable: false),
+                        ProdutoVenda_ProdutoId = c.Int(),
+                    })
+                .PrimaryKey(t => t.idVenda)
+                .ForeignKey("dbo.Produtos", t => t.ProdutoVenda_ProdutoId)
+                .Index(t => t.ProdutoVenda_ProdutoId);
+            
+            CreateTable(
                 "dbo.Produtos",
                 c => new
                     {
@@ -36,9 +50,12 @@ namespace EcommerceOsorio.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.ItemVenda", "ProdutoVenda_ProdutoId", "dbo.Produtos");
             DropForeignKey("dbo.Produtos", "CategoriaProduto_CategoriaId", "dbo.Categoria");
             DropIndex("dbo.Produtos", new[] { "CategoriaProduto_CategoriaId" });
+            DropIndex("dbo.ItemVenda", new[] { "ProdutoVenda_ProdutoId" });
             DropTable("dbo.Produtos");
+            DropTable("dbo.ItemVenda");
             DropTable("dbo.Categoria");
         }
     }

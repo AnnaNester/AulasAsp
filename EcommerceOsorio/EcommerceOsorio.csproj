@@ -141,17 +141,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808171117087_CriarBanco.cs" />
-    <Compile Include="Migrations\201808171117087_CriarBanco.Designer.cs">
-      <DependentUpon>201808171117087_CriarBanco.cs</DependentUpon>
+    <Compile Include="Migrations\201808211119323_CriarBanco.cs" />
+    <Compile Include="Migrations\201808211119323_CriarBanco.Designer.cs">
+      <DependentUpon>201808211119323_CriarBanco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808171314485_AddTableItemVenda.cs" />
-    <Compile Include="Migrations\201808171314485_AddTableItemVenda.Designer.cs">
-      <DependentUpon>201808171314485_AddTableItemVenda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808171422053_AlterTableCategorias.cs" />
-    <Compile Include="Migrations\201808171422053_AlterTableCategorias.Designer.cs">
-      <DependentUpon>201808171422053_AlterTableCategorias.cs</DependentUpon>
+    <Compile Include="Migrations\201808211131201_AddCarrinhoIdItemVenda.cs" />
+    <Compile Include="Migrations\201808211131201_AddCarrinhoIdItemVenda.Designer.cs">
+      <DependentUpon>201808211131201_AddCarrinhoIdItemVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -159,6 +155,7 @@
     <Compile Include="Models\ItemVenda.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Sessao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -189,14 +186,11 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808171117087_CriarBanco.resx">
-      <DependentUpon>201808171117087_CriarBanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211119323_CriarBanco.resx">
+      <DependentUpon>201808211119323_CriarBanco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808171314485_AddTableItemVenda.resx">
-      <DependentUpon>201808171314485_AddTableItemVenda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808171422053_AlterTableCategorias.resx">
-      <DependentUpon>201808171422053_AlterTableCategorias.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211131201_AddCarrinhoIdItemVenda.resx">
+      <DependentUpon>201808211131201_AddCarrinhoIdItemVenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

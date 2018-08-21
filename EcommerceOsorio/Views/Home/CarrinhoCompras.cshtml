@@ -4,18 +4,25 @@
     ViewBag.Title = "CarrinhoCompras";
 }
 
+<h2>Carrinho de compras</h2>
 <table class="table table-hover table-striped" style="margin-top:30px">
     <tr>
+        <th>Imagem</th>
         <th>Produto</th>
         <th>Quantidade</th>
         <th>Preço</th>
+        <th>Subtotal</th>
     </tr>
     @foreach (ItemVenda item in Model)
-            {
+    {
         <tr>
+            <td><img src="~/Images/@item.ProdutoVenda.ImagemProduto" alt="Imagem do produto" style="width:100px" /></td>
             <td>@item.ProdutoVenda.NomeProduto</td>
             <td>@item.QtdeVenda</td>
             <td>@item.PrecoVenda</td>
+            @{ double subtotal = item.PrecoVenda * item.QtdeVenda; }
+            <td>@subtotal.ToString("C2")</td>
+            <td></td>
         </tr>
     }
 </table>
