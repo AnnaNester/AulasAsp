@@ -13,6 +13,7 @@
         <th>Preço</th>
         <th>Subtotal</th>
     </tr>
+    @{ double total=0; }
     @foreach (ItemVenda item in Model)
     {
         <tr>
@@ -21,11 +22,19 @@
             <td>@item.QtdeVenda</td>
             <td>@item.PrecoVenda</td>
             @{ double subtotal = item.PrecoVenda * item.QtdeVenda; }
+            @{ total += subtotal; }
             <td>@subtotal.ToString("C2")</td>
             <td></td>
         </tr>
     }
 </table>
+
+@if (@total != 0)
+{
+    <div align="right">
+        <h3>Total: @total.ToString("C2")</h3>
+    </div>
+}
 
 
 

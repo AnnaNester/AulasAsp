@@ -27,15 +27,22 @@ namespace EcommerceOsorio.Controllers
         public ActionResult AdicionarAoCarrinho (int id)
         {
             Produto produto = ProdutoDAO.BuscarProdutoPorId(id);
-            ItemVenda itemVenda = new ItemVenda
+            if (produto.ProdutoId != null)
             {
-                ProdutoVenda = produto,
-                QtdeVenda = 1,
-                PrecoVenda = produto.PrecoProduto,
-                DataVenda = DateTime.Now,
-                CarrinhoId = Sessao.RetornarCarrinhoId()
-            };
-            ItemVendaDAO.CadastrarVenda(itemVenda);
+                ItemVenda itemVenda = new ItemVenda
+                {
+                    ProdutoVenda = produto,
+                    QtdeVenda = 1,
+                    PrecoVenda = produto.PrecoProduto,
+                    DataVenda = DateTime.Now,
+                    CarrinhoId = Sessao.RetornarCarrinhoId()
+                };
+                ItemVendaDAO.CadastrarVenda(itemVenda);
+            }
+            else
+            {
+
+            }
             return RedirectToAction("CarrinhoCompras");
         }
 
