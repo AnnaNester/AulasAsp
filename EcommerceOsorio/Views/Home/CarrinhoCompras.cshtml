@@ -1,7 +1,7 @@
 ﻿@using EcommerceOsorio.Models
 @model List<ItemVenda>
 @{
-    ViewBag.Title = "CarrinhoCompras";
+    double total = ViewBag.Total;
 }
 
 <h2>Carrinho de compras</h2>
@@ -13,7 +13,6 @@
         <th>Preço</th>
         <th>Subtotal</th>
     </tr>
-    @{ double total=0; }
     @foreach (ItemVenda item in Model)
     {
         <tr>
@@ -32,12 +31,9 @@
     }
 </table>
 
-@if (@total != 0)
-{
-    <div align="right">
-        <h3>Total: @total.ToString("C2")</h3>
-    </div>
-}
+<div class="card text-white bg-success mb-3" style="max-width: 20%;">
+    <div class="card-header"><b>Total: </b> @total.ToString("C2")</div>
+</div>
 
 
 

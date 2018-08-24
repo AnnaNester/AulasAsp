@@ -40,14 +40,27 @@ namespace EcommerceOsorio.Controllers
         }
 
         public ActionResult CarrinhoCompras()
-        { 
-            return View(ItemVendaDAO.BuscarCarrinhoId(Sessao.RetornarCarrinhoId()));
+        {
+            ViewBag.Total = ItemVendaDAO.RetornarTotal();
+            return View(ItemVendaDAO.BuscarItensVendaPorCarrinhoId());
         }
 
         public ActionResult RemoverCarrinho(int id)
         {
             ItemVendaDAO.RemoverProduto(id);
-            return RedirectToAction("CarrinhoCompras");
+            return RedirectToAction("CarrinhoCompras", "Home");
+        }
+
+        public ActionResult AdicionarCarrinho(int id)
+        {
+            ItemVendaDAO.AumentarItem(id);
+            return RedirectToAction("CarrinhoCompras", "Home");
+        }
+
+        public ActionResult DiminuirCarrinho(int id)
+        {
+            ItemVendaDAO.DiminuirItem(id);
+            return RedirectToAction("CarrinhoCompras", "Home");
         }
     }
 }

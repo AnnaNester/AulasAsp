@@ -30,10 +30,10 @@ namespace EcommerceOsorio.DAL
             
         }
 
-        public static List<ItemVenda> BuscarCarrinhoId ()
+        public static List<ItemVenda> BuscarItensVendaPorCarrinhoId()
         {
             string carrinhoId = Sessao.RetornarCarrinhoId();
-            return context.ItensVenda.Include("ProdutoVenda").Where(x => x.CarrinhoId.Equals(idCarrinho)).ToList();
+            return context.ItensVenda.Include("ProdutoVenda").Where(x => x.CarrinhoId.Equals(carrinhoId)).ToList();
         }
 
         public static void RemoverProduto(int id)
@@ -69,12 +69,12 @@ namespace EcommerceOsorio.DAL
 
         public static double RetornarTotal()
         {
-            return BuscarCarrinhoId().Sum(x => x.QtdeVenda * x.PrecoVenda);
+            return BuscarItensVendaPorCarrinhoId().Sum(x => x.QtdeVenda * x.PrecoVenda);
         }
 
         public static double RetornarQuantidade()
         {
-            return BuscarCarrinhoId().Sum(x => x.QtdeVenda);
+            return BuscarItensVendaPorCarrinhoId().Sum(x => x.QtdeVenda);
         }
     }
 }
