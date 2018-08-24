@@ -19,12 +19,15 @@
         <tr>
             <td><img src="~/Images/@item.ProdutoVenda.ImagemProduto" alt="Imagem do produto" style="width:100px" /></td>
             <td>@item.ProdutoVenda.NomeProduto</td>
-            <td>@item.QtdeVenda</td>
+            <td>@Html.ActionLink("-", "RemoverCarrinho", "Home", new { id = item.ProdutoVenda.ProdutoId }, new { @class = "btn btn-danger " })
+                @item.QtdeVenda
+                @Html.ActionLink("+", "AdicionarAoCarrinho", "Home", new { id = item.ProdutoVenda.ProdutoId }, new { @class = "btn btn-success " })
+            </td>
             <td>@item.PrecoVenda</td>
             @{ double subtotal = item.PrecoVenda * item.QtdeVenda; }
             @{ total += subtotal; }
             <td>@subtotal.ToString("C2")</td>
-            <td></td>
+            <td>@Html.ActionLink("Remover", "RemoverCarrinho", "Home", new { id = item.ProdutoVenda.ProdutoId }, new { @class = "btn btn-outline-info " })</td>
         </tr>
     }
 </table>

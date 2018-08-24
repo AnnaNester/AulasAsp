@@ -27,8 +27,6 @@ namespace EcommerceOsorio.Controllers
         public ActionResult AdicionarAoCarrinho (int id)
         {
             Produto produto = ProdutoDAO.BuscarProdutoPorId(id);
-            if (produto.ProdutoId != null)
-            {
                 ItemVenda itemVenda = new ItemVenda
                 {
                     ProdutoVenda = produto,
@@ -38,12 +36,7 @@ namespace EcommerceOsorio.Controllers
                     CarrinhoId = Sessao.RetornarCarrinhoId()
                 };
                 ItemVendaDAO.CadastrarVenda(itemVenda);
-            }
-            else
-            {
-
-            }
-            return RedirectToAction("CarrinhoCompras");
+                return RedirectToAction("CarrinhoCompras");
         }
 
         public ActionResult CarrinhoCompras()
@@ -51,5 +44,10 @@ namespace EcommerceOsorio.Controllers
             return View(ItemVendaDAO.BuscarCarrinhoId(Sessao.RetornarCarrinhoId()));
         }
 
+        public ActionResult RemoverCarrinho(int id)
+        {
+            ItemVendaDAO.RemoverProduto(id);
+            return RedirectToAction("CarrinhoCompras");
+        }
     }
 }
