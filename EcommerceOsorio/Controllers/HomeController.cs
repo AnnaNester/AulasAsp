@@ -1,6 +1,7 @@
 ﻿using EcommerceOsorio.DAL;
 using EcommerceOsorio.Models;
 using EcommerceOsorio.Utils;
+using EcommerceOsorioManha.DAL;
 using System;
 using System.Web.Mvc;
 
@@ -62,5 +63,22 @@ namespace EcommerceOsorio.Controllers
             ItemVendaDAO.DiminuirItem(id);
             return RedirectToAction("CarrinhoCompras", "Home");
         }
+
+        public ActionResult FinalizarCompra()
+        {
+            ViewBag.Itens = ItemVendaDAO.BuscarItensVendaPorCarrinhoId();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FinalizarCompra(Venda venda)
+        {
+            venda.CarrinhoId = Sessao.RetornarCarrinhoId();
+            venda.ItensVenda = ItemVendaDAO.BuscarItensVendaPorCarrinhoId();
+            Sessao.ZerarSessaoCarrinho();
+            VendaDAO.CadastrarVenda(venda);
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

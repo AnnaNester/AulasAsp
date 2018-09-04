@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace EcommerceOsorio.Controllers
 {
+    [Authorize]
     public class ProdutoController : Controller
     {
         public ActionResult ListarProduto()

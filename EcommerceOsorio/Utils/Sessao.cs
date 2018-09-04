@@ -17,5 +17,12 @@ namespace EcommerceOsorio.Utils
             }
             return HttpContext.Current.Session[NOME_SESSAO].ToString();
         }
+
+        internal static void ZerarSessaoCarrinho()
+        {
+            HttpContext.Current.Session[NOME_SESSAO] = null;
+        }
     }
+
+
 }

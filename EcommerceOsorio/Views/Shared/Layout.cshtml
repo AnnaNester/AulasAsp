@@ -1,22 +1,49 @@
-﻿<!DOCTYPE html>
+﻿@using EcommerceOsorio.DAL
+
+<!DOCTYPE html>
+
 <html>
-    <head>
-        <title>@Page.Title</title>
-        @RenderSection("head", required: false)
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            @Html.ActionLink("Ecommerce - UP", "Index", "Home", null, new { @class = "navbar-brand" })
-        </nav>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        @Html.ActionLink("Ecommerce - UP", "Index", "Home", null, new { @class = "navbar-brand" })
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="~/Home/CarrinhoCompras" class="btn btn-info">
+                    Carrinho
+                    <span class="badge badge-light">
+                        @ItemVendaDAO.RetornarQuantidade()
+                    </span>
+                </a>
+            </li>
+            @if(!Request.IsAuthenticated)
+            {
+                <li class="nav-item active" style="margin-left:10px">
+                    @Html.ActionLink("Login", "Login", "Usuario", null, new { @class = "nav-link" })
+                </li>
+            }
+            else
+            {
+                <li class="nav-item active" style="margin-left:10px">
+                    @Html.ActionLink("Logout", "Logout", "Usuario", null, new { @class = "nav-link" })
+                </li>
+            }
+            
+        </ul>
+    </nav>
 
-        <div>
-            @RenderBody()
-        </div>
+    <div id="content" class="container" style="margin-top:30px">
+        @RenderBody()
+    </div>
 
-        <hr style="margin-top:30px" />
-            <footer style="text-align:center">
-                <p>&copy; @DateTime.Now.Year - Desenvolvido por Anna Nester</p>
-            </footer>
-    </body>
+    <hr style="margin-top:30px" />
+    <footer style="text-align:center">
+        <p>&copy; @DateTime.Now.Year - Desenvolvido por Anna Nester</p>
+    </footer>
+</body>
 </html>

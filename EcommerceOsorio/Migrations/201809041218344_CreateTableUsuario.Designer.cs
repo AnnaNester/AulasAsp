@@ -6,14 +6,14 @@ namespace EcommerceOsorio.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddCarrinhoIdItemVenda : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class CreateTableUsuario : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCarrinhoIdItemVenda));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateTableUsuario));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808211131201_AddCarrinhoIdItemVenda"; }
+            get { return "201809041218344_CreateTableUsuario"; }
         }
         
         string IMigrationMetadata.Source
