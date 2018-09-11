@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace EcommerceOsorio.Models
 {
@@ -30,6 +26,21 @@ namespace EcommerceOsorio.Models
         [Display(Name = "Confirmação da senha do usuário")]
         [NotMapped]
         public string ConfirmacaoSenha { get; set; }
+
+        [Display(Name = "CEP do usuário")]
+        public string CEP { get; set; }
+
+        [Display(Name = "Endereço do usuário")]
+        public string Logradouro { get; set; }
+
+        [Display(Name = "Bairro do usuário")]
+        public string Bairro { get; set; }
+
+        [Display(Name = "Cidade do usuário")]
+        public string Localidade { get; set; }
+
+        [Display(Name = "Estado do usuário")]
+        public string UF { get; set; }
     }
 
 }
