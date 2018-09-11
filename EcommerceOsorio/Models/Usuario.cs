@@ -28,7 +28,7 @@ namespace EcommerceOsorio.Models
         public string ConfirmacaoSenha { get; set; }
 
         [Display(Name = "CEP do usuário")]
-        public string CEP { get; set; }
+        public string Cep { get; set; }
 
         [Display(Name = "Endereço do usuário")]
         public string Logradouro { get; set; }
