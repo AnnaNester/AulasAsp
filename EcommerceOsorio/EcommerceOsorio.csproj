@@ -152,6 +152,10 @@
     <Compile Include="Migrations\201809041218344_CreateTableUsuario.Designer.cs">
       <DependentUpon>201809041218344_CreateTableUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809111220593_AlterTableUsuario.cs" />
+    <Compile Include="Migrations\201809111220593_AlterTableUsuario.Designer.cs">
+      <DependentUpon>201809111220593_AlterTableUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809041218344_CreateTableUsuario.resx">
       <DependentUpon>201809041218344_CreateTableUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809111220593_AlterTableUsuario.resx">
+      <DependentUpon>201809111220593_AlterTableUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
