@@ -44,5 +44,23 @@ namespace EcommerceOsorio.Controllers
             }
             return NotFound();
         }
+
+        //POST: api/Produto/CadastrarProduto
+        [Route("CadastrarProduto")]
+        public IHttpActionResult PostCadastrarProduto(Produto produto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (ProdutoDAO.CadastrarProduto(produto))
+            {
+                return Created("", produto);
+            }
+            else
+            {
+                return Conflict();
+            }
+        }
     }
 }
